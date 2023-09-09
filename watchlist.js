@@ -17,7 +17,7 @@ async function getMoviesObject(idArray){
     let movies = []
 
     for(let id of idArray){
-        const response = await fetch(`http://www.omdbapi.com/?apikey=60ccceec&i=${id}`)
+        const response = await fetch(`https://www.omdbapi.com/?apikey=60ccceec&i=${id}`)
         const data = await response.json()
         data.Type === 'movie' && data.Poster !== 'N/A' && movies.push(await data)
     }
