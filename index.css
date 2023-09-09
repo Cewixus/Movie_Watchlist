@@ -1,0 +1,155 @@
+body {
+    margin: 0;  
+    font-family: 'Inter', sans-serif;
+    background-color: #0E0E0E;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.header-main {
+    display: flex;
+    height: 240px;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url(Images/image\ 36.png);
+    background-position: center;
+}
+
+.header-text {
+    color: white;
+    font-weight: 800;
+    font-size: 50px;
+    margin-left: 42px;;
+}
+
+.my-watchlist {
+    color: white;
+    font-weight: 700;
+    font-size: 20px;
+    margin-right: 46px;
+    cursor: pointer;
+}
+
+.search-container {
+    display: flex;
+    width: 100%;
+    position: relative;
+    top: -17px;
+    justify-content: center;
+}
+
+input {
+    width: 30vw;
+    min-width: 250px;
+    border: none;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    padding: 9px 40px;
+    color: #A5A5A5;
+    font-size: 14px;
+    font-weight: 500;
+    background: #2E2E2F url(Images/Search.png) no-repeat;
+    background-position: 10px;
+    outline: none;
+    margin: 0px;
+}
+
+input:focus {
+    background-color: #2E2E2F;
+}
+
+form{
+    display: flex;
+}
+
+header button {
+    padding: 9px 17px;
+    width: 7vw;
+    min-width: 80px;
+    border: none;
+    color: white;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    background-color: #4B4B4B;
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(0.999);
+}
+
+main>img {
+    margin-top: 30vh
+}
+
+.watchlist-text {
+    color: #787878;
+    font-weight: 700;
+    font-size: 18px;
+    margin-top: 30vh;
+}
+
+.movies-list {
+    width: 50vw;
+    min-width: 550px;
+    margin: 50px auto;
+}
+
+.movies-list h2 {
+    color: #787878;
+    margin-top: 30vh;
+}
+
+.movie-container{
+    color: white;
+    max-height: 320px;
+    margin: 30px 0px;
+}
+
+.movie-container img {
+    max-width: 150px;
+    margin-right: 20px;
+}
+
+.movie-container p {
+    max-inline-size: 35vw;
+    overflow: hidden;
+    padding: 5px 0;
+}
+
+p, h3{
+    margin: 5px 10px;
+}
+
+.description {
+    padding: 0px;
+    color: #A5A5A5;
+    text-align: start;
+}
+
+.movie-container button {
+    border: solid 1px white;
+    border-radius: 6px;
+    align-self: center;
+    padding: 7px 7px;
+    background: transparent;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    margin-left: 20px;
+}
