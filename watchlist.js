@@ -10,6 +10,11 @@ document.addEventListener("click", function(e){
         watchListArray.splice(watchListArray.indexOf(e.target.id), 1)
         localStorage.setItem("movies", JSON.stringify(watchListArray))
         getMoviesObject(watchListArray)
+        if(!watchListArray){
+            document.getElementById('watchlist').innerHTML = `
+            <h3 class="watchlist-text">Your watchlist is looking a little empty...</h3>
+            `
+        }
     }
 })
 
