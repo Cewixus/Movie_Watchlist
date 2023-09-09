@@ -26,7 +26,7 @@ document.addEventListener("click", function(e){
 
 async function getResultsFromApi(){
     let searchValue = document.getElementById("search-input").value
-    const response = await fetch(`http://www.omdbapi.com/?apikey=60ccceec&s=${searchValue}`)
+    const response = await fetch(`https://www.omdbapi.com/?apikey=60ccceec&s=${searchValue}`)
     const data = await response.json()
     document.getElementById("search-input").value = ''
     if(await data.Response === 'False'){
@@ -46,7 +46,7 @@ async function getMoviesObject(idArray){
     let movies = []
 
     for(let id of idArray){
-        const response = await fetch(`http://www.omdbapi.com/?apikey=60ccceec&i=${id}`)
+        const response = await fetch(`https://www.omdbapi.com/?apikey=60ccceec&i=${id}`)
         const data = await response.json()
         data.Type === 'movie' && data.Poster !== 'N/A' && movies.push(await data)
     }
