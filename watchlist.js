@@ -2,6 +2,7 @@ let watchListArray = []
 let watchlistArrayInLocalStorage = JSON.parse(localStorage.getItem("movies"))
 if(watchlistArrayInLocalStorage){
     watchListArray.push(...watchlistArrayInLocalStorage)
+    getMoviesObject(watchListArray)
 }
 
 document.addEventListener("click", function(e){
@@ -47,5 +48,3 @@ function renderMovies(movies){
     }
     document.getElementById('watchlist').innerHTML = html
 }
-
-getMoviesObject(watchListArray)
