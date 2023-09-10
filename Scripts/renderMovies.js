@@ -2,41 +2,24 @@ let watchListArray = []
 let watchlistArrayInLocalStorage = JSON.parse(localStorage.getItem("movies"))
 if(watchlistArrayInLocalStorage){
     watchListArray.push(...watchlistArrayInLocalStorage)
-    console.log(watchListArray)
-    if(watchListArray.length > 0){
-        console.log("hej")
-        getMoviesObject(watchListArray)
-    }
 }
 
-document.addEventListener("click", function(e){
-    if(e.target.name === 'remove-watchlist'){
-        watchListArray.splice(watchListArray.indexOf(e.target.id), 1)
-        localStorage.setItem("movies", JSON.stringify(watchListArray))
-        getMoviesObject(watchListArray)
-        if(watchListArray.length === 0){
-            document.getElementById('watchlist').innerHTML = `
-            <h3 class="watchlist-text">Your watchlist is looking a little empty...</h3>
-            `
-        }
-    }
-})
-
-async function getMoviesObject(idArray){
+async function getMoviesObject(idArray, page){
     let movies = []
+    
 
     for(let id of idArray){
         const response = await fetch(`https://www.omdbapi.com/?apikey=60ccceec&i=${id}`)
         const data = await response.json()
         data.Type === 'movie' && data.Poster !== 'N/A' && movies.push(await data)
     }
-    renderMovies(movies)
+    renderMovies(movies, page)
 }
 
-function renderMovies(movies){
-    let html = ''
+function renderMovies(movies, page){
+    page.innerHTML = ''
     for(let movie of movies){
-        html += `
+        page.innerHTML += `
             <div class="flex-row movie-container">
                 <img src="${movie.Poster}">
                 <div class="flex-column">
@@ -47,13 +30,17 @@ function renderMovies(movies){
                     <div class="flex-row">
                         <p>${movie.Runtime}</p>
                         <p>${movie.Genre}</p>
-                        <button id="${movie.imdbID}" name="remove-watchlist">- remove</button>
+                        <button id="${movie.imdbID}" name="watchlist-button">+ Add to Watchlist</button>
                     </div>
                     <p class="description">${movie.Plot}</p>
                 </div>
             </div>
             <hr>
         `
+        if(watchListArray.find(id => id === movie.imdbID) === movie.imdbID){
+            document.getElementById(movie.imdbID).innerText = '- remove'
+        }
     }
-    document.getElementById('watchlist').innerHTML = html
 }
+
+export {getMoviesObject, watchListArray}
